@@ -32,7 +32,7 @@ Please read [CONTRIBUTING.md](/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](/CODE_O
 
 ### Rules
 
-* Star the repo to get merged faster ;)
+* Star the repo to get your pull request merged faster ;)
 * Read the [CONTRIBUTING.md](/CONTRIBUTING.md) file.
 * Respect people.
 * Be friendly, helpful, and patient.
