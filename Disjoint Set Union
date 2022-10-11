@@ -1,0 +1,44 @@
+Disjoint Set Union
+This article discusses the data structure Disjoint Set Union or DSU. Often it is also called Union Find because of its two main operations.
+
+This data structure provides the following capabilities. We are given several elements, each of which is a separate set. A DSU will have an operation to combine any two sets, and it will be able to tell in which set a specific element is. The classical version also introduces a third operation, it can create a set from a new element.
+
+Thus the basic interface of this data structure consists of only three operations:
+
+make_set(v) - creates a new set consisting of the new element v
+union_sets(a, b) - merges the two specified sets (the set in which the element a is located, and the set in which the element b is located)
+find_set(v) - returns the representative (also called leader) of the set that contains the element v. This representative is an element of its corresponding set. It is selected in each set by the data structure itself (and can change over time, namely after union_sets calls). This representative can be used to check if two elements are part of the same set or not. a and b are exactly in the same set, if find_set(a) == find_set(b). Otherwise they are in different sets.
+As described in more detail later, the data structure allows you to do each of these operations in almost  time on average.
+
+Also in one of the subsections an alternative structure of a DSU is explained, which achieves a slower average complexity of , but can be more powerful than the regular DSU structure.
+
+
+
+Naive implementation:///
+We can already write the first implementation of the Disjoint Set Union data structure. It will be pretty inefficient at first, but later we can improve it using two optimizations, so that it will take nearly constant time for each function call.
+
+As we said, all the information about the sets of elements will be kept in an array parent.
+
+To create a new set (operation make_set(v)), we simply create a tree with root in the vertex v, meaning that it is its own ancestor.
+
+To combine two sets (operation union_sets(a, b)), we first find the representative of the set in which a is located, and the representative of the set in which b is located. If the representatives are identical, that we have nothing to do, the sets are already merged. Otherwise, we can simply specify that one of the representatives is the parent of the other representative - thereby combining the two trees.
+
+Finally the implementation of the find representative function (operation find_set(v)): we simply climb the ancestors of the vertex v until we reach the root, i.e. a vertex such that the reference to the ancestor leads to itself. This operation is easily implemented recursively.
+
+
+void make_set(int v) {
+    parent[v] = v;
+}
+
+int find_set(int v) {
+    if (v == parent[v])
+        return v;
+    return find_set(parent[v]);
+}
+
+void union_sets(int a, int b) {
+    a = find_set(a);
+    b = find_set(b);
+    if (a != b)
+        parent[b] = a;
+}
