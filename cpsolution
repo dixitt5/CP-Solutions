@@ -1,3 +1,0 @@
-cp_model.AddLessOrEqual(2 * x + 7 * y + 3 * z, 50);
-cp_model.AddLessOrEqual(3 * x - 5 * y + 7 * z, 45);
-cp_model.AddLessOrEqual(5 * x + 2 * y - 6 * z, 37);
