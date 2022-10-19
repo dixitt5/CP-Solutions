@@ -8,7 +8,7 @@
  
 
 <h4> You can make folders of programming languages and also you can contribute in the repo's below.</h4>
-
+<h4>Important: Add your files in a particular folder , this is a compulsory step to get approved faster.</h4>
 <h4> Add Problems solutions with name of problem code </h4>
 If you want to practice to make a pull request, follow the CONTRIBUTING.md
 
