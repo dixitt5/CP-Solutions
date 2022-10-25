@@ -1,0 +1,15 @@
+# cook your dish here
+t = int(input())
+for i in range(t):
+    x,y=map(int,input().split())
+    '''x---double sharing room ---3
+    and 
+       y---triple sharing room ---2'''
+    a=x*3
+    b=y*2
+    if(a==b):
+        print(a)
+    elif(a>b):
+        print(b)
+    else:
+        print(a)
