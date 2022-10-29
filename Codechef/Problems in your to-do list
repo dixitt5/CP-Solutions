@@ -1,0 +1,11 @@
+# cook your dish here
+t = int(input())
+for i in range(t): #--------1
+    l=int(input())
+    n= list(map(int,input().split()))
+    count=0
+    for j in (n):
+        if(j>=1000):
+            count+=1 
+    print(count)
+        
