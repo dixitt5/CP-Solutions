@@ -1,18 +1,25 @@
 #include <iostream>
 using namespace std;
 
-     int x =0;
-int fun(int n){
-
-    if(n>0){
-        x++;
-        return fun(n-1) +x;
-
+int rec(int a)
+{
+    int b;
+    if(a<=1)
+    {
+        return(1);
     }
-    return 0;
+    else
+    {
+        b=a*rec(a-1);
+        return(b);
+    }
 }
+
 int main(){
-    int d =fun(5);
-cout <<d;
-    return 0;
+    int rec(int);
+    int n, fact;
+    cout<<"Enter a number: ";
+    cin>>n;
+    fact=rec(n);
+    cout<<"Factorial of "<<n<<" is "<<fact<<endl;
 }
