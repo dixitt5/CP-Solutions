@@ -9,7 +9,6 @@ int main() {
     vec.push_back(40);
 
     vec.pop_back(); //Deletes the last element of vec
-
     
     //!!vec.begin() is a pointer pointing the first memory location
     for (auto i = vec.begin(); i != vec.end(); ++i) {//auto is the datatype assigned by the compiler.
