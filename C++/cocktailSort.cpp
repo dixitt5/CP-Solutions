@@ -2,59 +2,67 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void CocktailSort(int a[], int n)
+int binarySearch(int arr[], int low, int high, int key)
 {
-    bool swapped = true;
-    int start = 0;
-    int end = n - 1;
+    if (high < low)
+        return -1;
 
-    while (swapped)
-    {
+    int mid = (low + high) / 2;
+    if (key == arr[mid])
+        return mid;
 
-        swapped = false;
+    if (key > arr[mid])
+        return binarySearch(arr, (mid + 1), high, key);
 
-        for (int i = start; i < end; ++i)
-        {
-            if (a[i] > a[i + 1])
-            {
-                swap(a[i], a[i + 1]);
-                swapped = true;
-            }
-        }
-
-        if (!swapped)
-            break;
-
-        swapped = false;
-
-        --end;
-
-        for (int i = end - 1; i >= start; --i)
-        {
-            if (a[i] > a[i + 1])
-            {
-                swap(a[i], a[i + 1]);
-                swapped = true;
-            }
-        }
-
-        ++start;
-    }
+    return binarySearch(arr, low, (mid - 1), key);
 }
 
-void printArray(int a[], int n)
+int findPivot(int arr[], int low, int high)
 {
-    for (int i = 0; i < n; i++)
-        printf("%d ", a[i]);
-    printf("\n");
+
+    if (high < low)
+        return -1;
+    if (high == low)
+        return low;
+
+    int mid = (low + high) / 2;
+    if (mid < high && arr[mid] > arr[mid + 1])
+        return mid;
+
+    if (mid > low && arr[mid] < arr[mid - 1])
+        return (mid - 1);
+
+    if (arr[low] >= arr[mid])
+        return findPivot(arr, low, mid - 1);
+
+    return findPivot(arr, mid + 1, high);
+}
+
+int pivotedBinarySearch(int arr[], int n, int key)
+{
+    int pivot = findPivot(arr, 0, n - 1);
+
+    if (pivot == -1)
+        return binarySearch(arr, 0, n - 1, key);
+
+    if (arr[pivot] == key)
+        return pivot;
+
+    if (arr[0] <= key)
+        return binarySearch(arr, 0, pivot - 1, key);
+
+    return binarySearch(arr, pivot + 1, n - 1, key);
 }
 
 int main()
 {
-    int a[] = {5, 1, 4, 2, 8, 0, 2};
-    int n = sizeof(a) / sizeof(a[0]);
-    CocktailSort(a, n);
-    printf("Sorted array :\n");
-    printArray(a, n);
+
+    int arr1[] = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+    int n = sizeof(arr1) / sizeof(arr1[0]);
+    int key = 3;
+
+    cout << "Index of the element is : "
+         << pivotedBinarySearch(arr1, n, key);
+
     return 0;
 }
