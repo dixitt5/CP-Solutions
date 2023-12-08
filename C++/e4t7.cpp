@@ -1,6 +1,7 @@
 #include <iostream>
-using namespace std;
 #include <math.h>
+using namespace std;
+
 int main()
 { int x,temp,temp1,y,n,n1,n2,sum;
   cout<<"Enter a number: ";
